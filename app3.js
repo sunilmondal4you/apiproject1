@@ -13,11 +13,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get('/x',function(req, res){
-    res.send("Hello vipin");
+    var reqjason=req.query;
+    res.send("Hello"+ reqjason.name);
 });
 
 app.get('/y', function(req, res){
-    
+
     res.send("Hello World.");
 });
 
@@ -29,7 +30,8 @@ app.get('/x/y/z',function(req, res){
     res.send("What is your name?");
 });
 
-app.get('/x/y/z/a',function(req, res){
+app.get('/name',function(req, res){
+
     res.send("Where are you from?");
 });
 
@@ -46,14 +48,19 @@ app.post('/y',function(req, res){
     res.send("Thanks for your welcome.");
 });
 
-app.post('/x/y',function(req, res){
-    res.send("My name is Sunil.");
+app.post('/sk/:name/:id',function(req, res){
+    var name=req.params.name;
+    var id=req.params.id;
+    res.send("Hello" +" " +name+" "+ "  your Id is " +id);
+
 });
 
-app.post('/x/y/z',function(req, res){
-    res.send("I am from West Bengal.");
+app.post('/hello',function(req, res){
+    var output=req.body;
+    res.send("output");
+
 });
 
-app.listen(3000, function () {
+app.listen(3001, function () {
     console.log("Server has to be started first.");
 });
